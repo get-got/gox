@@ -81,36 +81,6 @@ func addDrop(base []Platform, add []Platform, drop []Platform) []Platform {
 	return newPlatforms
 }
 
-// addDrop appends all of the "add" entries and drops the "drop" entries, ignoring
-// the "Default" parameter.
-func addDrop(base []Platform, add []Platform, drop []Platform) []Platform {
-	newPlatforms := make([]Platform, len(base)+len(add))
-	copy(newPlatforms, base)
-	copy(newPlatforms[len(base):], add)
-
-	// slow, but we only do this during initialization at most once per version
-	for _, platform := range drop {
-		found := -1
-		for i := range newPlatforms {
-			if newPlatforms[i].Arch == platform.Arch && newPlatforms[i].OS == platform.OS {
-				found = i
-				break
-			}
-		}
-		if found < 0 {
-			panic(fmt.Sprintf("Expected to remove %+v but not found in list %+v", platform, newPlatforms))
-		}
-		if found == len(newPlatforms)-1 {
-			newPlatforms = newPlatforms[:found]
-		} else if found == 0 {
-			newPlatforms = newPlatforms[found:]
-		} else {
-			newPlatforms = append(newPlatforms[:found], newPlatforms[found+1:]...)
-		}
-	}
-	return newPlatforms
-}
-
 var (
 	OsList = []string{
 		"darwin",
