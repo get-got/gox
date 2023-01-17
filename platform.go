@@ -82,41 +82,15 @@ func addDrop(base []Platform, add []Platform, drop []Platform) []Platform {
 }
 
 var (
-	OsList = []string{
-		"darwin",
-		"dragonfly",
-		"linux",
-		"android",
-		"solaris",
-		"freebsd",
-		"nacl",
-		"netbsd",
-		"openbsd",
-		"plan9",
-		"windows",
-	}
-
-	ArchList = []string{
-		"386",
-		"amd64",
-		"amd64p32",
-		"arm",
-		"arm64",
-		"mips64",
-		"mips64le",
-		"ppc64",
-		"ppc64le",
-	}
-
 	Platforms_1_0 = []Platform{
 		{OS: "darwin", Arch: "386", Default: true},
 		{OS: "darwin", Arch: "amd64", Default: true},
 		{OS: "linux", Arch: "386", Default: true},
 		{OS: "linux", Arch: "amd64", Default: true},
+		{OS: "linux", Arch: "arm", Default: true},
 		{OS: "linux", Arch: "arm", Default: true, ARM: "5"},
 		{OS: "linux", Arch: "arm", Default: true, ARM: "6"},
 		{OS: "linux", Arch: "arm", Default: true, ARM: "7"},
-		{OS: "linux", Arch: "arm", Default: true, ARM: "8"},
 		{OS: "freebsd", Arch: "386", Default: true},
 		{OS: "freebsd", Arch: "amd64", Default: true},
 		{OS: "openbsd", Arch: "386", Default: true},
@@ -127,6 +101,9 @@ var (
 
 	Platforms_1_1 = addDrop(Platforms_1_0, []Platform{
 		{OS: "freebsd", Arch: "arm", Default: true},
+		{OS: "freebsd", Arch: "arm", Default: true, ARM: "5"},
+		{OS: "freebsd", Arch: "arm", Default: true, ARM: "6"},
+		{OS: "freebsd", Arch: "arm", Default: true, ARM: "7"},
 		{OS: "netbsd", Arch: "386", Default: true},
 		{OS: "netbsd", Arch: "amd64", Default: true},
 		{OS: "netbsd", Arch: "arm", Default: true},
@@ -139,16 +116,25 @@ var (
 		{OS: "nacl", Arch: "amd64", Default: false},
 		{OS: "nacl", Arch: "amd64p32", Default: false},
 		{OS: "nacl", Arch: "arm", Default: false},
+		{OS: "nacl", Arch: "arm", Default: false, ARM: "5"},
+		{OS: "nacl", Arch: "arm", Default: false, ARM: "6"},
+		{OS: "nacl", Arch: "arm", Default: false, ARM: "7"},
 		{OS: "solaris", Arch: "amd64", Default: false},
 	}, nil)
 
 	Platforms_1_4 = addDrop(Platforms_1_3, []Platform{
 		{OS: "android", Arch: "arm", Default: false},
+		{OS: "android", Arch: "arm", Default: false, ARM: "5"},
+		{OS: "android", Arch: "arm", Default: false, ARM: "6"},
+		{OS: "android", Arch: "arm", Default: false, ARM: "7"},
 		{OS: "plan9", Arch: "amd64", Default: false},
 	}, nil)
 
 	Platforms_1_5 = addDrop(Platforms_1_4, []Platform{
 		{OS: "darwin", Arch: "arm", Default: false},
+		{OS: "darwin", Arch: "arm", Default: false, ARM: "5"},
+		{OS: "darwin", Arch: "arm", Default: false, ARM: "6"},
+		{OS: "darwin", Arch: "arm", Default: false, ARM: "7"},
 		{OS: "darwin", Arch: "arm64", Default: false},
 		{OS: "linux", Arch: "arm64", Default: false},
 		{OS: "linux", Arch: "ppc64", Default: false},
@@ -162,12 +148,18 @@ var (
 		{OS: "linux", Arch: "mips64le", Default: false},
 		{OS: "nacl", Arch: "386", Default: false},
 		{OS: "openbsd", Arch: "arm", Default: true},
+		{OS: "openbsd", Arch: "arm", Default: true, ARM: "5"},
+		{OS: "openbsd", Arch: "arm", Default: true, ARM: "6"},
+		{OS: "openbsd", Arch: "arm", Default: true, ARM: "7"},
 	}, nil)
 
 	Platforms_1_7 = addDrop(Platforms_1_5, []Platform{
 		// While not fully supported s390x is generally useful
 		{OS: "linux", Arch: "s390x", Default: true},
 		{OS: "plan9", Arch: "arm", Default: false},
+		{OS: "plan9", Arch: "arm", Default: false, ARM: "5"},
+		{OS: "plan9", Arch: "arm", Default: false, ARM: "6"},
+		{OS: "plan9", Arch: "arm", Default: false, ARM: "7"},
 		// Add the 1.6 Platforms, but reflect full support for mips64 and mips64le
 		{OS: "android", Arch: "386", Default: false},
 		{OS: "android", Arch: "amd64", Default: false},
@@ -175,6 +167,9 @@ var (
 		{OS: "linux", Arch: "mips64le", Default: true},
 		{OS: "nacl", Arch: "386", Default: false},
 		{OS: "openbsd", Arch: "arm", Default: true},
+		{OS: "openbsd", Arch: "arm", Default: true, ARM: "5"},
+		{OS: "openbsd", Arch: "arm", Default: true, ARM: "6"},
+		{OS: "openbsd", Arch: "arm", Default: true, ARM: "7"},
 	}, nil)
 
 	Platforms_1_8 = addDrop(Platforms_1_7, []Platform{
@@ -195,6 +190,9 @@ var (
 	Platforms_1_12 = addDrop(Platforms_1_11, []Platform{
 		{OS: "aix", Arch: "ppc64", Default: false},
 		{OS: "windows", Arch: "arm", Default: true},
+		{OS: "windows", Arch: "arm", Default: true, ARM: "5"},
+		{OS: "windows", Arch: "arm", Default: true, ARM: "6"},
+		{OS: "windows", Arch: "arm", Default: true, ARM: "7"},
 	}, nil)
 
 	Platforms_1_13 = addDrop(Platforms_1_12, []Platform{
@@ -211,6 +209,9 @@ var (
 		{OS: "nacl", Arch: "386", Default: false},
 		{OS: "nacl", Arch: "amd64", Default: false},
 		{OS: "nacl", Arch: "arm", Default: false},
+		{OS: "nacl", Arch: "arm", Default: false, ARM: "5"},
+		{OS: "nacl", Arch: "arm", Default: false, ARM: "6"},
+		{OS: "nacl", Arch: "arm", Default: false, ARM: "7"},
 	})
 
 	Platforms_1_15 = addDrop(Platforms_1_14, []Platform{
