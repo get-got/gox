@@ -87,7 +87,6 @@ var (
 		{OS: "darwin", Arch: "amd64", Default: true},
 		{OS: "linux", Arch: "386", Default: true},
 		{OS: "linux", Arch: "amd64", Default: true},
-		{OS: "linux", Arch: "arm", Default: true},
 		{OS: "linux", Arch: "arm", Default: true, ARM: "5"},
 		{OS: "linux", Arch: "arm", Default: true, ARM: "6"},
 		{OS: "linux", Arch: "arm", Default: true, ARM: "7"},
@@ -100,13 +99,14 @@ var (
 	}
 
 	Platforms_1_1 = addDrop(Platforms_1_0, []Platform{
-		{OS: "freebsd", Arch: "arm", Default: true},
 		{OS: "freebsd", Arch: "arm", Default: true, ARM: "5"},
 		{OS: "freebsd", Arch: "arm", Default: true, ARM: "6"},
 		{OS: "freebsd", Arch: "arm", Default: true, ARM: "7"},
 		{OS: "netbsd", Arch: "386", Default: true},
 		{OS: "netbsd", Arch: "amd64", Default: true},
-		{OS: "netbsd", Arch: "arm", Default: true},
+		{OS: "netbsd", Arch: "arm", Default: true, ARM: "5"},
+		{OS: "netbsd", Arch: "arm", Default: true, ARM: "6"},
+		{OS: "netbsd", Arch: "arm", Default: true, ARM: "7"},
 		{OS: "plan9", Arch: "386", Default: false},
 	}, nil)
 
@@ -115,7 +115,6 @@ var (
 		{OS: "dragonfly", Arch: "amd64", Default: false},
 		{OS: "nacl", Arch: "amd64", Default: false},
 		{OS: "nacl", Arch: "amd64p32", Default: false},
-		{OS: "nacl", Arch: "arm", Default: false},
 		{OS: "nacl", Arch: "arm", Default: false, ARM: "5"},
 		{OS: "nacl", Arch: "arm", Default: false, ARM: "6"},
 		{OS: "nacl", Arch: "arm", Default: false, ARM: "7"},
@@ -123,7 +122,6 @@ var (
 	}, nil)
 
 	Platforms_1_4 = addDrop(Platforms_1_3, []Platform{
-		{OS: "android", Arch: "arm", Default: false},
 		{OS: "android", Arch: "arm", Default: false, ARM: "5"},
 		{OS: "android", Arch: "arm", Default: false, ARM: "6"},
 		{OS: "android", Arch: "arm", Default: false, ARM: "7"},
@@ -131,7 +129,6 @@ var (
 	}, nil)
 
 	Platforms_1_5 = addDrop(Platforms_1_4, []Platform{
-		{OS: "darwin", Arch: "arm", Default: false},
 		{OS: "darwin", Arch: "arm", Default: false, ARM: "5"},
 		{OS: "darwin", Arch: "arm", Default: false, ARM: "6"},
 		{OS: "darwin", Arch: "arm", Default: false, ARM: "7"},
@@ -147,7 +144,6 @@ var (
 		{OS: "linux", Arch: "mips64", Default: false},
 		{OS: "linux", Arch: "mips64le", Default: false},
 		{OS: "nacl", Arch: "386", Default: false},
-		{OS: "openbsd", Arch: "arm", Default: true},
 		{OS: "openbsd", Arch: "arm", Default: true, ARM: "5"},
 		{OS: "openbsd", Arch: "arm", Default: true, ARM: "6"},
 		{OS: "openbsd", Arch: "arm", Default: true, ARM: "7"},
@@ -156,7 +152,6 @@ var (
 	Platforms_1_7 = addDrop(Platforms_1_5, []Platform{
 		// While not fully supported s390x is generally useful
 		{OS: "linux", Arch: "s390x", Default: true},
-		{OS: "plan9", Arch: "arm", Default: false},
 		{OS: "plan9", Arch: "arm", Default: false, ARM: "5"},
 		{OS: "plan9", Arch: "arm", Default: false, ARM: "6"},
 		{OS: "plan9", Arch: "arm", Default: false, ARM: "7"},
@@ -166,7 +161,6 @@ var (
 		{OS: "linux", Arch: "mips64", Default: true},
 		{OS: "linux", Arch: "mips64le", Default: true},
 		{OS: "nacl", Arch: "386", Default: false},
-		{OS: "openbsd", Arch: "arm", Default: true},
 		{OS: "openbsd", Arch: "arm", Default: true, ARM: "5"},
 		{OS: "openbsd", Arch: "arm", Default: true, ARM: "6"},
 		{OS: "openbsd", Arch: "arm", Default: true, ARM: "7"},
@@ -189,7 +183,6 @@ var (
 
 	Platforms_1_12 = addDrop(Platforms_1_11, []Platform{
 		{OS: "aix", Arch: "ppc64", Default: false},
-		{OS: "windows", Arch: "arm", Default: true},
 		{OS: "windows", Arch: "arm", Default: true, ARM: "5"},
 		{OS: "windows", Arch: "arm", Default: true, ARM: "6"},
 		{OS: "windows", Arch: "arm", Default: true, ARM: "7"},
@@ -203,12 +196,12 @@ var (
 
 	Platforms_1_14 = addDrop(Platforms_1_13, []Platform{
 		{OS: "freebsd", Arch: "arm64", Default: true},
+		{OS: "linux", Arch: "arm64", Default: true},
 		{OS: "linux", Arch: "riscv64", Default: true},
 	}, []Platform{
 		// drop nacl
 		{OS: "nacl", Arch: "386", Default: false},
 		{OS: "nacl", Arch: "amd64", Default: false},
-		{OS: "nacl", Arch: "arm", Default: false},
 		{OS: "nacl", Arch: "arm", Default: false, ARM: "5"},
 		{OS: "nacl", Arch: "arm", Default: false, ARM: "6"},
 		{OS: "nacl", Arch: "arm", Default: false, ARM: "7"},
